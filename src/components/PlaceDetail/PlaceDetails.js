@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import MoreInfo from "../MoreInfo/MoreInfo";
 import { Row, Col, Button, Card } from "react-bootstrap";
 
 const PlaceDetails = ({ place }) => {
+  const [modalShow, setModalShow] = useState(false);
   const closeDay = () => {
     let day;
     switch (new Date().getDay()) {
@@ -32,6 +34,7 @@ const PlaceDetails = ({ place }) => {
     console.log(day);
     return day;
   };
+
   return (
     <>
       <Card>
@@ -64,11 +67,18 @@ const PlaceDetails = ({ place }) => {
               </Button>
             </Col>
             <Col>
-              <Button variant="secondary">MORE INFO</Button>
+              <Button variant="secondary" onClick={() => setModalShow(true)}>
+                MORE INFO
+              </Button>
             </Col>
           </Row>
         </Card.Body>
       </Card>
+      <MoreInfo
+        place={place}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </>
   );
 };
