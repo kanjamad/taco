@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "./components/Header/Header";
+import Map from "./components/Map/Map";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
 
@@ -13,7 +14,7 @@ const App = () => {
             <h1>list</h1>
           </Col>
           <Col xs={12} md={8}>
-            <h1>Map</h1>
+            <Map />
           </Col>
         </Row>
       </Container>
