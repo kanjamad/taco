@@ -26,9 +26,10 @@ const MoreInfo = (props) => {
         />
 
         <h1>{props.place.name}</h1>
-        <p>{props.place.address}</p>
         <p>
-          {props.place.city}, {props.place.state}
+          {props.place.address}
+          <br />
+          {props.place.city}, {props.place.state} {}
           {props.place.postal_code}
         </p>
         <Row>

@@ -50,9 +50,9 @@ const PlaceDetails = ({ place }) => {
           <Row>
             <Col>
               <Card.Text>
-                <p>{place.address}</p>
                 <p>
-                  {place.city}, {place.state}
+                  {place.address} <br />
+                  {place.city}, {place.state} {}
                   {place.postal_code}
                 </p>
                 <p className="text-success"> Open today until {closeDay()} </p>
