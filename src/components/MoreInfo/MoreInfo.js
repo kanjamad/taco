@@ -33,16 +33,24 @@ const MoreInfo = (props) => {
         </p>
         <Row>
           <Col>
-            <p style={{ color: "orange" }}>
+            <h5 style={{ color: "orange" }}>
               <FaPhoneSquareAlt />
               (xxx)xxx-xxxx
-            </p>
+            </h5>
           </Col>
           <Col>
-            <p style={{ color: "orange" }}>
+            <h5
+              style={{ color: "orange", cursor: "pointer" }}
+              onClick={() =>
+                window.open(
+                  `https://www.google.com/maps/search/?api=1&query=${props.place.latitude},${props.place.longitude}`,
+                  "_blank"
+                )
+              }
+            >
               <AiFillCar />
               Get Directions
-            </p>
+            </h5>
           </Col>
         </Row>
         <Row>
