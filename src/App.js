@@ -7,6 +7,14 @@ import { Row, Col } from "react-bootstrap";
 
 const App = () => {
   const [places, setPlaces] = useState([]);
+  const [coordinates, setCoordinates] = useState({});
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCoordinates({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
 
   const getPlacesData = async () => {
     const response = await fetch(
@@ -19,7 +27,7 @@ const App = () => {
 
   useEffect(() => {
     getPlacesData();
-  }, []);
+  }, [coordinates]);
   return (
     <>
       <Header />
@@ -28,7 +36,11 @@ const App = () => {
           <List places={places} />
         </Col>
         <Col xs={12} md={8}>
-          <Map />
+          <Map
+            places={places}
+            setCoordinates={setCoordinates}
+            coordinates={coordinates}
+          />
         </Col>
       </Row>
     </>

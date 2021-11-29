@@ -4,6 +4,28 @@ import { Row, Col, Button, Card } from "react-bootstrap";
 
 const PlaceDetails = ({ place }) => {
   const [modalShow, setModalShow] = useState(false);
+
+  // on button click get the map and marker show
+  // onClick set position ({lat:,lang})
+  /**
+ *  Set the visibility to 'hidden' or 'visible'.
+//  */
+  // hide() {
+  //   if (this.div) {
+  //     this.div.style.visibility = "hidden";
+  //   }
+  // }
+  // show() {
+  //   if (this.div) {
+  //     this.div.style.visibility = "visible";
+  //   }
+  // }
+  // Get Map show with Marker
+  const handleButtonPress = () => {
+    console.log("button pressed");
+  };
+
+  // Get close Day
   const closeDay = () => {
     let day;
     switch (new Date().getDay()) {
@@ -62,7 +84,13 @@ const PlaceDetails = ({ place }) => {
           </Row>
           <Row>
             <Col>
-              <Button variant="secondary" onClick={""}>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  handleButtonPress();
+                  // Marker lat and lang to map
+                }}
+              >
                 DIRECTIONS
               </Button>
             </Col>

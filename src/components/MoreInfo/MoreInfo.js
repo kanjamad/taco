@@ -3,6 +3,8 @@ import { Button, Modal, Image, Row, Col } from "react-bootstrap";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { AiFillCar } from "react-icons/ai";
 
+
+
 const MoreInfo = (props) => {
   console.log(props);
 
