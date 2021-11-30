@@ -1,5 +1,5 @@
 
-![screenshot](taco.gif "screenshot")
+![screenshot](tacotrack.gif "screenshot")
 # Setup project
 
 carete React app
