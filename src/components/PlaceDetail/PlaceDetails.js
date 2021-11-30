@@ -1,27 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MoreInfo from "../MoreInfo/MoreInfo";
 import Map from "../Map/Map";
 import { Row, Col, Button, Card } from "react-bootstrap";
+import haversine from "haversine-distance";
 
 const PlaceDetails = ({ place }) => {
   const [modalShow, setModalShow] = useState(false);
   const [show, setShow] = useState(false);
+  const [currentPosition, setCurrentPosition] = useState({});
 
-  // on button click get the map and marker show
-  // onClick set position ({lat:,lang})
-  /**
- *  Set the visibility to 'hidden' or 'visible'.
-//  */
-  // hide() {
-  //   if (this.div) {
-  //     this.div.style.visibility = "hidden";
-  //   }
-  // }
-  // show() {
-  //   if (this.div) {
-  //     this.div.style.visibility = "visible";
-  //   }
-  // }
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  }, []);
+
+  const userPosition = currentPosition;
+  console.log(userPosition);
+  const placePosition = { lat: place.latitude, lng: place.longitude };
+  console.log(placePosition);
+  const haversine_m = haversine(userPosition, placePosition);
+  console.log(haversine_m);
+  var haversine_miles = haversine_m * 0.000621; //Results in kilometers
+  console.log(haversine_miles);
 
   // Get Map show with Marker
   const handleButtonPress = () => setShow((prevShow) => !prevShow);
@@ -69,7 +76,7 @@ const PlaceDetails = ({ place }) => {
                   <Card.Title>{place.name}</Card.Title>
                 </Col>
                 <Col>
-                  <Card.Text>0.5miles</Card.Text>
+                  <Card.Text>{haversine_miles} miles</Card.Text>
                 </Col>
               </Row>
               <Row>

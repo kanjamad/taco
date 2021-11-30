@@ -1,6 +1,7 @@
 import React, { useRef, useCallback } from "react";
 import GoogleMapReact from "google-map-react";
 import { FaMapMarkerAlt } from "react-icons/fa";
+import "./map.css";
 
 const Map = ({ place, show }) => {
   const mapRef = useRef();
@@ -12,7 +13,7 @@ const Map = ({ place, show }) => {
   return (
     <>
       {show && (
-        <div style={{ height: "100vh", width: "100%" }}>
+        <div className="map">
           <GoogleMapReact
             bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAP_API_KEY }}
             defaultCenter={coordinates}
