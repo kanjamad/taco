@@ -8,7 +8,7 @@ npx create-react-app nameapp
 ```
 Install dependencies
 ```javascript
-yarn add google-map-react bootstrap react-bootstrap react-icons
+yarn add @react-google-maps/api bootstrap react-bootstrap react-icons 
 
 ```
 
