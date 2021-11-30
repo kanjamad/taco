@@ -14,18 +14,7 @@ const App = () => {
       setPlaces(data);
     });
   }, []);
-  // const getPlacesData = async () => {
-  //   const response = await fetch(
-  //     "https://my.api.mockaroo.com/locations.json?key=a45f1200"
-  //   );
-  //   const data = await response.json();
-  //   setPlaces(data);
-  //   // console.log(data)
-  // };
 
-  // useEffect(() => {
-  //   getPlacesData();
-  // }, []);
   return (
     <>
       <Header />
