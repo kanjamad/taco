@@ -27,7 +27,7 @@ const PlaceDetails = ({ place }) => {
   const placePosition = { lat: place.latitude, lng: place.longitude };
   console.log(placePosition);
   const haversine_m = haversine(userPosition, placePosition);
-  console.log(haversine_m);
+  // console.log(haversine_m);
   var haversine_miles = haversine_m * 0.000621; //Results in kilometers
   console.log(haversine_miles);
 
@@ -67,7 +67,7 @@ const PlaceDetails = ({ place }) => {
   };
 
   return (
-    <>
+    <div>
       <Row style={{ width: "100%" }}>
         <Col xs={12} md={4}>
           <Card>
@@ -129,7 +129,7 @@ const PlaceDetails = ({ place }) => {
           <Mapapi place={place} show={show} />
         </Col>
       </Row>
-    </>
+    </div>
   );
 };
 

@@ -8,7 +8,7 @@ npx create-react-app nameapp
 ```
 Install dependencies
 ```javascript
-yarn add @react-google-maps/api bootstrap react-bootstrap react-icons 
+yarn add @react-google-maps/api bootstrap react-bootstrap react-icons axios
 
 ```
 
@@ -24,10 +24,7 @@ If you have a google map API key, You can display google maps sections on your w
 5. Navigate to APIs and Services and  click on Libraries
 6. Enable the following Libraries one by one 
      1. Google Javascript API 
-      2. Google Place API 
-      3. Google Direction  API 
-     4. Google Geolocation API 
-     5. Google Geocoding  API
+     2. Google Place API 
 
 7. Navigate to APIs and Services and  click on Credentials 
 8. Click on Create Credentials and then the API key and it will show up a screen with API Key
@@ -41,3 +38,92 @@ yarn add haversine-distance
 ```
 # Get Directions
 https://developers.google.com/maps/documentation/urls/get-started#directions-examples
+
+
+
+
+###  fetch data using useEffect hooks
+```javascript
+  const getPlacesData = async () => {
+    const response = await fetch(
+      "https://my.api.mockaroo.com/locations.json?key=a45f1200"
+    );
+    const data = await response.json();
+    setPlaces(data);
+    // console.log(data)
+  };
+
+  useEffect(() => {
+    getPlacesData();
+  }, []);
+```
+
+
+# Example Using Classes
+
+``` javascript
+import React from "react";
+import CardList from "./components/card-list/CardList";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+class App extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      places: [],
+    };
+  }
+
+  componentDidMount() {
+    fetch("https://my.api.mockaroo.com/locations.json?key=a45f1200")
+      .then((response) => response.json())
+      // .then((data) => console.log(data));
+      .then((data) => this.setState({ places: data }));
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <CardList places={this.state.places} />
+      </div>
+    );
+  }
+}
+
+export default App;
+
+```
+# Example Using Hooks
+``` javascript
+import React, { useState, useEffect } from "react";
+import CardList from "./components/card-list/CardList";
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+const App = () => {
+  const [places, setPlaces] = useState([]);
+
+  useEffect(() => {
+    // Update the document title using the browser API
+    fetch("https://my.api.mockaroo.com/locations.json?key=a45f1200")
+      .then((response) => response.json())
+      // .then((data) => console.log(data));
+      .then((data) => {
+        setPlaces(data);
+      });
+  }, []);
+
+  return !places.length ? (
+    <h1>Loading</h1>
+  ) : (
+    <div className="App">
+      <CardList places={places} />
+    </div>
+  );
+};
+
+export default App;
+
+
+```
