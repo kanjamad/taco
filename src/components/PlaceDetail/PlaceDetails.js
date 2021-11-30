@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import MoreInfo from "../MoreInfo/MoreInfo";
-import Map from "../Map/Map";
+// import Map from "../Map/Map";
+import Mapapi from "../Map/Mapapi";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import haversine from "haversine-distance";
 
@@ -125,7 +126,7 @@ const PlaceDetails = ({ place }) => {
           />
         </Col>
         <Col xs={12} md={8}>
-          <Map place={place} show={show} />
+          <Mapapi place={place} show={show} />
         </Col>
       </Row>
     </>
