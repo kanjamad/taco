@@ -41,3 +41,6 @@ yarn add haversine-distance
 ```
 # Get Directions
 https://developers.google.com/maps/documentation/urls/get-started#directions-examples
+
+
+# fetch data using axios
