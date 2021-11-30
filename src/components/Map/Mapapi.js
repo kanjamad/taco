@@ -1,10 +1,5 @@
 import React, { useState, useCallback, useRef } from "react";
-import {
-  GoogleMap,
-  useLoadScript,
-  Marker,
-  InfoWindow,
-} from "@react-google-maps/api";
+import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 import "./map.css";
 
 const Mapapi = ({ place, show }) => {
