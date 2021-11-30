@@ -8,6 +8,7 @@ import { Row, Col } from "react-bootstrap";
 const App = () => {
   const [places, setPlaces] = useState([]);
   const [coordinates, setCoordinates] = useState({});
+  const [clicked, setClicked] = useState(null);
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
@@ -33,13 +34,14 @@ const App = () => {
       <Header />
       <Row style={{ width: "100%" }}>
         <Col xs={12} md={4}>
-          <List places={places} />
+          <List places={places} clicked={clicked} />
         </Col>
         <Col xs={12} md={8}>
           <Map
             places={places}
             setCoordinates={setCoordinates}
             coordinates={coordinates}
+            setClicked={setClicked}
           />
         </Col>
       </Row>
