@@ -3,8 +3,6 @@ import { Button, Modal, Image, Row, Col } from "react-bootstrap";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { AiFillCar } from "react-icons/ai";
 
-
-
 const MoreInfo = (props) => {
   console.log(props);
 
@@ -19,7 +17,6 @@ const MoreInfo = (props) => {
       <Modal.Body>
         <Image
           fluid
-          //   src="https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg"
           src={
             props.place.photo
               ? props.place.photo.images.large.url
@@ -46,7 +43,8 @@ const MoreInfo = (props) => {
               style={{ color: "orange", cursor: "pointer" }}
               onClick={() =>
                 window.open(
-                  `https://www.google.com/maps/search/?api=1&query=${props.place.latitude},${props.place.longitude}`,
+                  // `https://www.google.com/maps/search/?api=1&query=${props.place.latitude},${props.place.longitude}`,
+                  `https://www.google.com/maps/search/?api=1&query=${props.place.address}%2C${props.place.city}%2C${props.place.state}%2C${props.place.postal_code}`,
                   "_blank"
                 )
               }
