@@ -40,9 +40,37 @@ yarn add haversine-distance
 https://developers.google.com/maps/documentation/urls/get-started#directions-examples
 
 
+## asiox
+>src/api/index.js
+```javascript
+import axios from "axios";
 
+export const getPlacesData = async () => {
+  try {
+    // request
+    const { data } = await axios.get(
+      "https://my.api.mockaroo.com/locations.json?key=a45f1200"
+    );
+    // console.log(response.data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-###  fetch data using useEffect hooks
+```
+> app.js
+```javascript
+import { getPlacesData } from "./api";
+...
+ useEffect(() => {
+    getPlacesData().then((data) => {
+      console.log(data);
+      setPlaces(data);
+    });
+  }, []);
+```
+##  fetch data using useEffect hooks
 ```javascript
   const getPlacesData = async () => {
     const response = await fetch(
