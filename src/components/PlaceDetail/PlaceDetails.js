@@ -5,9 +5,9 @@ import Mapapi from "../Map/Mapapi";
 import { Row, Col, Button, Card } from "react-bootstrap";
 import haversine from "haversine-distance";
 
-const PlaceDetails = ({ place }) => {
+const PlaceDetails = ({ place, setShow }) => {
   const [modalShow, setModalShow] = useState(false);
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const [currentPosition, setCurrentPosition] = useState({});
 
   const success = (position) => {
@@ -68,67 +68,54 @@ const PlaceDetails = ({ place }) => {
 
   return (
     <div>
-      <Row style={{ width: "100%" }}>
-        <Col xs={12} md={4}>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col>
-                  <Card.Title>{place.name}</Card.Title>
-                </Col>
-                <Col>
-                  <Card.Text>{haversine_miles} miles</Card.Text>
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Card.Text>
-                    <p>
-                      {place.address} <br />
-                      {place.city}, {place.state} {}
-                      {place.postal_code}
-                    </p>
-                    <p className="text-success">
-                      {" "}
-                      Open today until {closeDay()}{" "}
-                    </p>
-                  </Card.Text>
-                </Col>
-                <Col></Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Button
-                    variant="secondary"
-                    onClick={() => {
-                      handleButtonPress();
-                      // Marker lat and lang to map
-                    }}
-                  >
-                    DIRECTIONS
-                  </Button>
-                </Col>
-                <Col>
-                  <Button
-                    variant="secondary"
-                    onClick={() => setModalShow(true)}
-                  >
-                    MORE INFO
-                  </Button>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
-          <MoreInfo
-            place={place}
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-          />
-        </Col>
-        <Col xs={12} md={8}>
-          <Mapapi place={place} show={show} />
-        </Col>
-      </Row>
+      <Card>
+        <Card.Body>
+          <Row>
+            <Col>
+              <Card.Title>{place.name}</Card.Title>
+            </Col>
+            <Col>
+              <Card.Text>{haversine_miles} miles</Card.Text>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Card.Text>
+                <p>
+                  {place.address} <br />
+                  {place.city}, {place.state} {}
+                  {place.postal_code}
+                </p>
+                <p className="text-success"> Open today until {closeDay()} </p>
+              </Card.Text>
+            </Col>
+            <Col></Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button
+                variant="secondary"
+                onClick={() => {
+                  handleButtonPress();
+                  // Marker lat and lang to map
+                }}
+              >
+                DIRECTIONS
+              </Button>
+            </Col>
+            <Col>
+              <Button variant="secondary" onClick={() => setModalShow(true)}>
+                MORE INFO
+              </Button>
+            </Col>
+          </Row>
+        </Card.Body>
+      </Card>
+      <MoreInfo
+        place={place}
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />
     </div>
   );
 };
