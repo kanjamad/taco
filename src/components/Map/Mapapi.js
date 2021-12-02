@@ -2,12 +2,12 @@ import React, { useCallback, useRef } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 const libraries = ["places"];
-const Mapapi = ({ place, markerPosition }) => {
+const Mapapi = ({ places, markerPosition }) => {
   const mapContainerStyle = {
     height: "100vh",
     width: "100%",
   };
-  const center = { lat: place.latitude, lng: place.longitude };
+  const center = markerPosition;
 
   const options = {
     disableDefaultUI: true,
