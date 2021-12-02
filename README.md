@@ -1,7 +1,6 @@
 
 ![screenshot](tacotrack.gif "screenshot")
 # Setup project
-
 carete React app
 ```javascript
 npx create-react-app nameapp
