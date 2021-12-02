@@ -2,7 +2,7 @@ import React, { useCallback, useRef } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 const libraries = ["places"];
-const Mapapi = ({ places, markerPosition }) => {
+const Mapapi = ({ places, markerPosition, currentPosition }) => {
   const mapContainerStyle = {
     height: "100vh",
     width: "100%",
@@ -29,7 +29,7 @@ const Mapapi = ({ places, markerPosition }) => {
     <div>
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
-        zoom={14}
+        zoom={10}
         center={center}
         options={options}
         onLoad={onMapLoad}

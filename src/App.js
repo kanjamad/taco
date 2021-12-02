@@ -8,7 +8,6 @@ import { Row, Col } from "react-bootstrap";
 const App = () => {
   const [places, setPlaces] = useState([]);
   const [markerPosition, setMarkerPosition] = useState({});
-
   const [currentPosition, setCurrentPosition] = useState({});
 
   const success = (position) => {
