@@ -7,8 +7,8 @@ import haversine from "haversine-distance";
 
 const PlaceDetails = ({ place }) => {
   const [modalShow, setModalShow] = useState(false);
-  const [show, setShow] = useState(false);
   const [currentPosition, setCurrentPosition] = useState({});
+  const [markerPosition, setMarkerPosition] = useState({});
 
   const success = (position) => {
     const currentPosition = {
@@ -23,16 +23,18 @@ const PlaceDetails = ({ place }) => {
   }, []);
 
   const userPosition = currentPosition;
-  console.log(userPosition);
+  // console.log(userPosition);
   const placePosition = { lat: place.latitude, lng: place.longitude };
-  console.log(placePosition);
+  // console.log(placePosition);
   const haversine_m = haversine(userPosition, placePosition);
-  console.log(haversine_m);
+  // console.log(haversine_m);
   var haversine_miles = haversine_m * 0.000621; //Results in kilometers
-  console.log(haversine_miles);
+  // console.log(haversine_miles);
 
   // Get Map show with Marker
-  const handleButtonPress = () => setShow((prevShow) => !prevShow);
+  const onMouseOverEvent = () => {
+    setMarkerPosition({ lat: place.latitude, lng: place.longitude });
+  };
 
   // Get close Day
   const closeDay = () => {
@@ -100,10 +102,7 @@ const PlaceDetails = ({ place }) => {
                 <Col>
                   <Button
                     variant="secondary"
-                    onClick={() => {
-                      handleButtonPress();
-                      // Marker lat and lang to map
-                    }}
+                    onMouseOver={() => onMouseOverEvent()}
                   >
                     DIRECTIONS
                   </Button>
@@ -126,7 +125,7 @@ const PlaceDetails = ({ place }) => {
           />
         </Col>
         <Col xs={12} md={8}>
-          <Mapapi place={place} show={show} />
+          <Mapapi place={place} markerPosition={markerPosition} />
         </Col>
       </Row>
     </>
