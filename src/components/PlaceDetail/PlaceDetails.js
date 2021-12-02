@@ -54,6 +54,7 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
 
   return (
     <div>
+
       <Card>
         <Card.Body>
           <Row>
@@ -99,6 +100,9 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
+
+
+
     </div>
   );
 };

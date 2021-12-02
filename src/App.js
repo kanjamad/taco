@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { getPlacesData } from "./api";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
+
 import Mapapi from "./components/Map/Mapapi.js";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Row, Col } from "react-bootstrap";
 
@@ -22,18 +25,13 @@ const App = () => {
     navigator.geolocation.getCurrentPosition(success);
   }, []);
 
-  const getPlacesData = async () => {
-    const response = await fetch(
-      "https://my.api.mockaroo.com/locations.json?key=a45f1200"
-    );
-    const data = await response.json();
-    setPlaces(data);
-    // console.log(data)
-  };
-
   useEffect(() => {
-    getPlacesData();
+    getPlacesData().then((data) => {
+      console.log(data);
+      setPlaces(data);
+    });
   }, []);
+
   return (
     <div>
       <Header />
