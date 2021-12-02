@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { getPlacesData } from "./api";
 import Header from "./components/Header/Header";
 import List from "./components/List/List";
-
 import Mapapi from "./components/Map/Mapapi.js";
 
 import "bootstrap/dist/css/bootstrap.min.css";
