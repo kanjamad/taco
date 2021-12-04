@@ -1,5 +1,5 @@
 
-![screenshot](tacotruck.gif "screenshot")
+![screenshot](taco.gif "screenshot")
 
 # Demo : 
 https://react-taco-truck-kanjamad.herokuapp.com/
@@ -158,3 +158,4 @@ export default App;
 
 
 ```
+

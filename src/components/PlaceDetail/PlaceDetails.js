@@ -72,7 +72,7 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
                   {place.city}, {place.state} {}
                   {place.postal_code}
                 </p>
-                <p className="text-success"> Open today until {closeDay()} </p>
+                <p className="text-success">Open today until {closeDay()} </p>
               </Card.Text>
             </Col>
             <Col></Col>
