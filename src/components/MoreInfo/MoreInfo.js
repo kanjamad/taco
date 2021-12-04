@@ -2,9 +2,13 @@ import React from "react";
 import { Button, Modal, Image, Row, Col } from "react-bootstrap";
 import { FaPhoneSquareAlt } from "react-icons/fa";
 import { AiFillCar } from "react-icons/ai";
+import "./moreInfo.css";
 
 const MoreInfo = (props) => {
   console.log(props);
+
+  var today = new Date().getDay();
+  console.log("d" + today);
 
   return (
     <Modal
@@ -25,12 +29,12 @@ const MoreInfo = (props) => {
         />
 
         <h1>{props.place.name}</h1>
-        <p>
+        <h5>
           {props.place.address}
           <br />
           {props.place.city}, {props.place.state} {}
           {props.place.postal_code}
-        </p>
+        </h5>
         <Row>
           <Col>
             <h5 style={{ color: "orange" }}>
@@ -54,43 +58,43 @@ const MoreInfo = (props) => {
             </h5>
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d1" ? " highlight" : ""}>
           <Col>Monday</Col>
           <Col>
             {props.place.monday_open} - {props.place.monday_close}
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d2" ? " highlight" : ""}>
           <Col>Tuesday</Col>
           <Col>
             {props.place.tuesday_open} - {props.place.tuesday_close}
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d3" ? " highlight" : ""}>
           <Col>Wednesday</Col>
           <Col>
             {props.place.wednesday_open} - {props.place.wednesday_close}
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d4" ? " highlight" : ""}>
           <Col>Thursday</Col>
           <Col>
             {props.place.thursday_open} - {props.place.thursday_close}
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d5" ? " highlight" : ""}>
           <Col>Friday</Col>
           <Col>
             {props.place.friday_open} - {props.place.friday_close}
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d6" ? " highlight" : ""}>
           <Col>Saturday</Col>
           <Col>
             {props.place.saturday_open} - {props.place.saturday_close}
           </Col>
         </Row>
-        <Row>
+        <Row className={"d" + today === "d7" ? " highlight" : ""}>
           <Col>Sunday</Col>
           <Col>
             {props.place.sunday_open} - {props.place.sunday_close}
