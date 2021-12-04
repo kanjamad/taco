@@ -43,7 +43,7 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
         day = place.friday_close;
         break;
       case 6:
-        day = place.Saturday_close;
+        day = place.saturday_close;
         break;
       default:
         day = " 24 hrs";
@@ -54,7 +54,6 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
 
   return (
     <div>
-
       <Card>
         <Card.Body>
           <Row>
@@ -100,9 +99,6 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
         show={modalShow}
         onHide={() => setModalShow(false)}
       />
-
-
-
     </div>
   );
 };
