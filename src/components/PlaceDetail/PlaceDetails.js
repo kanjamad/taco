@@ -12,7 +12,7 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
   // console.log(placePosition);
   const haversine_m = haversine(userPosition, placePosition);
   // console.log(haversine_m);
-  var haversine_miles = haversine_m * 0.000621; //Results in kilometers
+  var haversine_miles = (haversine_m * 0.000621).toFixed(2); //Results in kilometers
   // console.log(haversine_miles);
 
   // Get Map show with Marker

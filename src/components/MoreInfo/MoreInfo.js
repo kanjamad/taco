@@ -94,7 +94,7 @@ const MoreInfo = (props) => {
             {props.place.saturday_open} - {props.place.saturday_close}
           </Col>
         </Row>
-        <Row className={"d" + today === "d7" ? " highlight" : ""}>
+        <Row className={"d" + today === "d0" ? " highlight" : ""}>
           <Col>Sunday</Col>
           <Col>
             {props.place.sunday_open} - {props.place.sunday_close}
