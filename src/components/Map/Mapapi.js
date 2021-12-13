@@ -2,17 +2,16 @@ import React, { useCallback, useRef } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 const libraries = ["places"];
-const Mapapi = ({ places, markerPosition, currentPosition }) => {
-  const mapContainerStyle = {
-    height: "100vh",
-    width: "100%",
-  };
-  const center = markerPosition;
+const mapContainerStyle = {
+  height: "100vh",
+  width: "100%",
+};
+const options = {
+  disableDefaultUI: true,
+  zoomControl: true,
+};
 
-  const options = {
-    disableDefaultUI: true,
-    zoomControl: true,
-  };
+const Mapapi = ({ markerPosition }) => {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries,
@@ -30,7 +29,7 @@ const Mapapi = ({ places, markerPosition, currentPosition }) => {
       <GoogleMap
         mapContainerStyle={mapContainerStyle}
         zoom={10}
-        center={center}
+        center={markerPosition}
         options={options}
         onLoad={onMapLoad}
       >

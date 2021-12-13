@@ -6,14 +6,13 @@ import haversine from "haversine-distance";
 const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
   const [modalShow, setModalShow] = useState(false);
 
+  // First point in my haversine calculation
   const userPosition = currentPosition;
-  // console.log(userPosition);
+  // Second point in my haversine calculation
   const placePosition = { lat: place.latitude, lng: place.longitude };
-  // console.log(placePosition);
+
   const haversine_m = haversine(userPosition, placePosition);
-  // console.log(haversine_m);
-  var haversine_miles = (haversine_m * 0.000621).toFixed(2); //Results in kilometers
-  // console.log(haversine_miles);
+  var haversine_miles = (haversine_m * 0.000621).toFixed(2); //Results in miles and formats a number using fixed-point notation
 
   // Get Map show with Marker
   const onMouseOverEvent = () => {
@@ -67,7 +66,7 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
           <Row>
             <Col>
               <Card.Text>
-                <p>
+                <p onMouseOver={() => onMouseOverEvent()}>
                   {place.address} <br />
                   {place.city}, {place.state} {}
                   {place.postal_code}
@@ -75,7 +74,6 @@ const PlaceDetails = ({ place, setMarkerPosition, currentPosition }) => {
                 <p className="text-success">Open today until {closeDay()} </p>
               </Card.Text>
             </Col>
-            <Col></Col>
           </Row>
           <Row>
             <Col>
