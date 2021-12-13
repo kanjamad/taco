@@ -39,55 +39,27 @@ You can use the haversine-distance module to do this so you won't need to handle
 ```javascript
 yarn add haversine-distance
 ```
+* You can use the module as follows:
+```javascript
+var haversine = require("haversine-distance");
+
+//First point in your haversine calculation
+var point1 = { lat: 6.1754, lng: 106.8272 }
+
+//Second point in your haversine calculation
+var point2 = { lat: 6.1352, lng: 106.8133 }
+
+var haversine_m = haversine(point1, point2); //Results in meters (default)
+var haversine_km = haversine_m /1000; //Results in kilometers
+
+console.log("distance (in meters): " + haversine_m + "m");
+console.log("distance (in kilometers): " + haversine_km + "km");
+```
+
 # Get Directions
 https://developers.google.com/maps/documentation/urls/get-started#directions-examples
 
 
-## asiox
->src/api/index.js
-```javascript
-import axios from "axios";
-
-export const getPlacesData = async () => {
-  try {
-    // request
-    const { data } = await axios.get(
-      "https://my.api.mockaroo.com/locations.json?key=a45f1200"
-    );
-    // console.log(response.data);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-```
-> app.js
-```javascript
-import { getPlacesData } from "./api";
-...
- useEffect(() => {
-    getPlacesData().then((data) => {
-      console.log(data);
-      setPlaces(data);
-    });
-  }, []);
-```
-##  fetch data using useEffect hooks
-```javascript
-  const getPlacesData = async () => {
-    const response = await fetch(
-      "https://my.api.mockaroo.com/locations.json?key=a45f1200"
-    );
-    const data = await response.json();
-    setPlaces(data);
-    // console.log(data)
-  };
-
-  useEffect(() => {
-    getPlacesData();
-  }, []);
-```
 
 
 # Example Using Classes
@@ -159,3 +131,87 @@ export default App;
 
 ```
 
+# Get geolocation api
+
+```javascript
+  const [currentPosition, setCurrentPosition] = useState({});
+
+  const success = (position) => {
+    const currentPosition = {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude,
+    };
+    setCurrentPosition(currentPosition);
+  };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(success);
+  }, []);
+```
+> destructure it
+```javascript
+const [currentPosition, setCurrentPosition] = useState({});
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCurrentPosition({ lat: latitude, lng: longitude });
+      }
+    );
+  }, []);
+```
+
+
+##  Fetching Data with Fetch API 
+> app.js
+```javascript
+  useEffect(() => {
+    // Update the document title using the browser API
+    fetch("https://my.api.mockaroo.com/locations.json?key=a45f1200")
+      .then((response) => response.json())
+      // .then((data) => console.log(data));
+      .then((data) => {setPlaces(data)});
+
+  }, []);
+```
+## Fetching Data with Axios library
+* It does the same job as Fetch, but the main difference is that it already returns the result as JSON object, so we don't need to convert it.
+>src/api/index.js
+```javascript
+import axios from "axios";
+
+export const getPlacesData = async () => {
+  try {
+    // request
+    const { data } = await axios.get(
+      "https://my.api.mockaroo.com/locations.json?key=a45f1200"
+    );
+    // console.log(response.data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+```
+> app.js
+```javascript
+import { getPlacesData } from "./api";
+...
+ useEffect(() => {
+    getPlacesData().then((data) => {
+      console.log(data);
+      setPlaces(data);
+    });
+  }, []);
+```
+
+### Ways of Fetching Data
+There are many ways to extract data from API in React:
+
+* using Fetch API
+* using Axios library
+* using async-await syntax
+* using custom hooks
+* using React Query library
+* using GrapthQL API

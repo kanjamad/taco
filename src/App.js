@@ -12,18 +12,16 @@ const App = () => {
   const [markerPosition, setMarkerPosition] = useState({});
   const [currentPosition, setCurrentPosition] = useState({});
 
-  const success = (position) => {
-    const currentPosition = {
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    };
-    setCurrentPosition(currentPosition);
-  };
-
+  // Get geolocation api
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(success);
+    navigator.geolocation.getCurrentPosition(
+      ({ coords: { latitude, longitude } }) => {
+        setCurrentPosition({ lat: latitude, lng: longitude });
+      }
+    );
   }, []);
 
+  // Get
   useEffect(() => {
     getPlacesData().then((data) => {
       console.log(data);
@@ -43,11 +41,7 @@ const App = () => {
           />
         </Col>
         <Col xs={12} md={8}>
-          <Mapapi
-            places={places}
-            markerPosition={markerPosition}
-            currentPosition={currentPosition}
-          />
+          <Mapapi markerPosition={markerPosition} />
         </Col>
       </Row>
     </div>
